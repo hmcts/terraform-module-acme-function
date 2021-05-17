@@ -5,3 +5,10 @@ data "azurerm_dns_zone" "zone" {
   name                = each.value
   resource_group_name = var.dns_zone_rg
 }
+data "azurerm_subscription" "subid" {
+  provider = "azurerm.dnszone"
+}
+
+data "azuread_groups" "groups" {
+  display_names = ["DTS Platform Operations"]
+}
