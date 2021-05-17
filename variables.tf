@@ -11,11 +11,11 @@ variable "product" {
   default     = "acme"
 }
 
-variable "aspskusize" {
+variable "asp_sku_size" {
   default     = "Y1"
   description = "SKU size for App Service Plan."
 }
-variable "aspskutier" {
+variable "asp_sku_tier" {
   default     = "Dynamic"
   description = "SKU tier for App Service Plan."
 }

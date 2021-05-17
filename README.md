@@ -30,13 +30,13 @@ No modules.
 | [azurerm_application_insights.appinsight](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/application_insights) | resource |
 | [azurerm_function_app.funcapp](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/function_app) | resource |
 | [azurerm_key_vault.kv](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/key_vault) | resource |
-| [azurerm_key_vault_access_policy.groupaccess](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/key_vault_access_policy) | resource |
-| [azurerm_key_vault_access_policy.kv-policy](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/key_vault_access_policy) | resource |
 | [azurerm_resource_group.rg](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/resource_group) | resource |
 | [azurerm_role_assignment.Reader](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/role_assignment) | resource |
 | [azurerm_role_assignment.dnszonecontributer](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/role_assignment) | resource |
+| [azurerm_role_assignment.kvaccess](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/role_assignment) | resource |
+| [azurerm_role_assignment.kvgroupaccess](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/role_assignment) | resource |
 | [azurerm_storage_account.stg](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/storage_account) | resource |
-| [azuread_groups.groups](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/data-sources/groups) | data source |
+| [azuread_group.group](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/data-sources/group) | data source |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/data-sources/client_config) | data source |
 | [azurerm_dns_zone.zone](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/data-sources/dns_zone) | data source |
 | [azurerm_subscription.dns_zone](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/data-sources/subscription) | data source |
@@ -45,8 +45,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aspskusize"></a> [aspskusize](#input\_aspskusize) | SKU size for App Service Plan. | `string` | `"Y1"` | no |
-| <a name="input_aspskutier"></a> [aspskutier](#input\_aspskutier) | SKU tier for App Service Plan. | `string` | `"Dynamic"` | no |
+| <a name="input_asp_sku_size"></a> [asp\_sku\_size](#input\_asp\_sku\_size) | SKU size for App Service Plan. | `string` | `"Y1"` | no |
+| <a name="input_asp_sku_tier"></a> [asp\_sku\_tier](#input\_asp\_sku\_tier) | SKU tier for App Service Plan. | `string` | `"Dynamic"` | no |
 | <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Common tag to be applied | `map(string)` | n/a | yes |
 | <a name="input_dns_zone_rg"></a> [dns\_zone\_rg](#input\_dns\_zone\_rg) | Name of the resource group DNS Zones belongs to. | `string` | `"reformMgmtRG"` | no |
 | <a name="input_dns_zones"></a> [dns\_zones](#input\_dns\_zones) | List of DNS Zones. | `list(any)` | n/a | yes |

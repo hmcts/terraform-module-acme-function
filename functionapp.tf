@@ -6,8 +6,8 @@ resource "azurerm_app_service_plan" "asp" {
   kind                = "FunctionApp"
   reserved            = false
   sku {
-    size = var.aspskusize
-    tier = var.aspskutier
+    size = var.asp_sku_size
+    tier = var.asp_sku_tier
   }
   tags = var.common_tags
 }
@@ -25,7 +25,7 @@ resource "azurerm_key_vault" "kv" {
 resource "azurerm_application_insights" "appinsight" {
   application_type    = "web"
   location            = var.location
-  name                = format("%s-%s", var.product, var.env)
+  name                = "${var.product}-${var.env}"
   resource_group_name = azurerm_resource_group.rg.name
   tags                = var.common_tags
 }
