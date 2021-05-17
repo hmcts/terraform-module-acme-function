@@ -9,6 +9,6 @@ data "azurerm_subscription" "dns_zone" {
   provider = "azurerm.dnszone"
 }
 
-data "azuread_groups" "groups" {
-  display_names = ["DTS Platform Operations"]
+data "azuread_group" "group" {
+  display_name = "DTS Platform Operations"
 }

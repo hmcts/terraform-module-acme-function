@@ -18,8 +18,7 @@ resource "azurerm_role_assignment" "kvaccess" {
   scope                = azurerm_key_vault.kv.id
 }
 resource "azurerm_role_assignment" "kvgroupaccess" {
-  for_each             = toset(data.azuread_groups.groups.object_ids)
-  principal_id         = each.value
+  principal_id         = data.azuread_group.group.object_id
   role_definition_name = "Key Vault Administrator"
   scope                = azurerm_key_vault.kv.id
 }
