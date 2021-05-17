@@ -5,7 +5,7 @@ data "azurerm_dns_zone" "zone" {
   name                = each.value
   resource_group_name = var.dns_zone_rg
 }
-data "azurerm_subscription" "subid" {
+data "azurerm_subscription" "dns_zone" {
   provider = "azurerm.dnszone"
 }
 
