@@ -87,7 +87,7 @@ resource "azurerm_function_app" "funcapp" {
 
 resource "azuread_application" "appreg" {
   name                       = "${var.product}-${var.env}"
-  reply_urls                 = "https://${var.product}-${var.env}.azurewebsites.net/.auth/login/aad/callback"
+  reply_urls                 = [format("%s%s-%s%s", "https://", var.product, var.env, ".azurewebsites.net/.auth/login/aad/callback")]
   available_to_other_tenants = false
   oauth2_allow_implicit_flow = true
   required_resource_access {
