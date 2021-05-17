@@ -15,13 +15,13 @@ resource "azurerm_app_service_plan" "asp" {
 
 
 resource "azurerm_key_vault" "kv" {
-  location            = var.location
-  name                = format("%s%s%s", var.product, var.env, "6")
-  resource_group_name = azurerm_resource_group.rg.name
-  tenant_id           = data.azurerm_client_config.current.tenant_id
-  sku_name            = "standard"
-  //enable_rbac_authorization = true
-  tags = var.common_tags
+  location                  = var.location
+  name                      = format("%s%s", var.product, var.env)
+  resource_group_name       = azurerm_resource_group.rg.name
+  tenant_id                 = data.azurerm_client_config.current.tenant_id
+  sku_name                  = "standard"
+  enable_rbac_authorization = true
+  tags                      = var.common_tags
 }
 
 
