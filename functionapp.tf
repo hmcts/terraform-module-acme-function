@@ -15,12 +15,13 @@ resource "azurerm_app_service_plan" "asp" {
 
 
 resource "azurerm_key_vault" "kv" {
-  location            = var.location
-  name                = format("%s%s", var.product, var.env)
-  resource_group_name = azurerm_resource_group.rg.name
-  tenant_id           = data.azurerm_client_config.current.tenant_id
-  sku_name            = "standard"
-  tags                = var.common_tags
+  location                  = var.location
+  name                      = format("%s%s", var.product, var.env)
+  resource_group_name       = azurerm_resource_group.rg.name
+  tenant_id                 = data.azurerm_client_config.current.tenant_id
+  sku_name                  = "standard"
+  enable_rbac_authorization = true
+  tags                      = var.common_tags
 }
 
 
@@ -71,7 +72,7 @@ resource "azurerm_function_app" "funcapp" {
     APPLICATIONINSIGHTS_CONNECTION_STRING      = "InstrumentationKey=${azurerm_application_insights.appinsight.instrumentation_key};IngestionEndpoint=https://uksouth-0.in.applicationinsights.azure.com/"
     AzureWebJobsStorage                        = azurerm_storage_account.stg.primary_connection_string
     WEBSITE_CONTENTAZUREFILECONNECTIONSTRING   = azurerm_storage_account.stg.primary_connection_string
-    WEBSITE_CONTENTSHARE                       = format("%s-%s", var.product, var.env)
+    WEBSITE_CONTENTSHARE                       = "${var.product}-${var.env}"
     WEBSITE_RUN_FROM_PACKAGE                   = "https://shibayan.blob.core.windows.net/azure-keyvault-letsencrypt/v3/latest.zip"
     FUNCTIONS_WORKER_RUNTIME                   = "dotnet"
     "Acmebot:AzureDns:SubscriptionId"          = data.azurerm_subscription.subid.subscription_id
@@ -96,8 +97,8 @@ resource "azurerm_private_dns_cname_record" "cname" {
 
 
 resource "azuread_application" "appreg" {
-  name                       = format("%s-%s", var.product, var.env)
-  reply_urls                 = [format("%s%s-%s%s", "https://", var.product, var.env, ".azurewebsites.net/.auth/login/aad/callback")]
+  name                       = "${var.product}-${var.env}"
+  reply_urls                 = "https://${var.product}-${var.env}.azurewebsites.net/.auth/login/aad/callback"
   available_to_other_tenants = false
   oauth2_allow_implicit_flow = true
   required_resource_access {
