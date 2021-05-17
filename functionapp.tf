@@ -85,17 +85,6 @@ resource "azurerm_function_app" "funcapp" {
 }
 
 
-
-resource "azurerm_private_dns_cname_record" "cname" {
-  provider            = azurerm.privatezone
-  name                = azurerm_function_app.funcapp.name
-  zone_name           = local.private_dns_mapping[var.env].dns_zone
-  resource_group_name = local.private_dns_mapping[var.env].resource_group
-  ttl                 = "300"
-  record              = format("%s-%s%s", var.product, var.env, ".azurewebsites.net")
-}
-
-
 resource "azuread_application" "appreg" {
   name                       = "${var.product}-${var.env}"
   reply_urls                 = "https://${var.product}-${var.env}.azurewebsites.net/.auth/login/aad/callback"
