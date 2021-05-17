@@ -52,7 +52,7 @@ No modules.
 | <a name="input_dns_zones"></a> [dns\_zones](#input\_dns\_zones) | List of DNS Zones. | `list(any)` | n/a | yes |
 | <a name="input_env"></a> [env](#input\_env) | Name of the environment to deploy the resource. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Azure location to deploy the resource. | `string` | `"UK South"` | no |
-| <a name="input_product"></a> [product](#input\_product) | Name of the product. | `string` | `"acme"` | no |
+| <a name="input_product"></a> [product](#input\_product) | Name of the product. | `any` | n/a | yes |
 
 ## Outputs
 

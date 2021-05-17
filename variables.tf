@@ -8,7 +8,6 @@ variable "env" {
 }
 variable "product" {
   description = "Name of the product."
-  default     = "acme"
 }
 
 variable "asp_sku_size" {
