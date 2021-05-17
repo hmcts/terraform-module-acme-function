@@ -1,7 +1,7 @@
 
 resource "azurerm_app_service_plan" "asp" {
   location            = var.location
-  name                = format("%s-%s-%s", var.product, var.env, "asp")
+  name                = "${var.product}-${var.env}-asp"
   resource_group_name = azurerm_resource_group.rg.name
   kind                = "FunctionApp"
   reserved            = false
@@ -11,8 +11,6 @@ resource "azurerm_app_service_plan" "asp" {
   }
   tags = var.common_tags
 }
-
-
 
 resource "azurerm_key_vault" "kv" {
   location                  = var.location
@@ -24,8 +22,6 @@ resource "azurerm_key_vault" "kv" {
   tags                      = var.common_tags
 }
 
-
-
 resource "azurerm_application_insights" "appinsight" {
   application_type    = "web"
   location            = var.location
@@ -33,7 +29,6 @@ resource "azurerm_application_insights" "appinsight" {
   resource_group_name = azurerm_resource_group.rg.name
   tags                = var.common_tags
 }
-
 
 resource "azurerm_storage_account" "stg" {
   name                     = "${var.product}${var.env}stg"
@@ -83,7 +78,6 @@ resource "azurerm_function_app" "funcapp" {
   }
   tags = var.common_tags
 }
-
 
 resource "azuread_application" "appreg" {
   name                       = "${var.product}-${var.env}"
