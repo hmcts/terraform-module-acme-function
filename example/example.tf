@@ -27,7 +27,7 @@ provider "azurerm" {
 }
 
 module "acme" {
-  source = "/Users/mohanay/BAU/terraform-module-acme-function"
+  source = "git::https://github.com/hmcts/terraform-module-acme-function.git?ref=master"
   providers = {
     azurerm.dnszone     = azurerm.dnszones
     azurerm.privatezone = azurerm.privatezones
