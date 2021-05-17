@@ -1,4 +1,4 @@
-# https://github.com/hmcts/terraform-module-acme-function
+# terraform-module-acme-function
 
 Terraform module to create a Function App which automates certificate management.
 
@@ -16,7 +16,6 @@ Terraform module to create a Function App which automates certificate management
 | <a name="provider_azuread"></a> [azuread](#provider\_azuread) | n/a |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | =2.58.0 |
 | <a name="provider_azurerm.dnszone"></a> [azurerm.dnszone](#provider\_azurerm.dnszone) | =2.58.0 |
-| <a name="provider_azurerm.privatezone"></a> [azurerm.privatezone](#provider\_azurerm.privatezone) | =2.58.0 |
 
 ## Modules
 
@@ -33,7 +32,6 @@ No modules.
 | [azurerm_key_vault.kv](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/key_vault) | resource |
 | [azurerm_key_vault_access_policy.groupaccess](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/key_vault_access_policy) | resource |
 | [azurerm_key_vault_access_policy.kv-policy](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/key_vault_access_policy) | resource |
-| [azurerm_private_dns_cname_record.cname](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/private_dns_cname_record) | resource |
 | [azurerm_resource_group.rg](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/resource_group) | resource |
 | [azurerm_role_assignment.Reader](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/role_assignment) | resource |
 | [azurerm_role_assignment.dnszonecontributer](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/resources/role_assignment) | resource |
@@ -41,7 +39,7 @@ No modules.
 | [azuread_groups.groups](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/data-sources/groups) | data source |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/data-sources/client_config) | data source |
 | [azurerm_dns_zone.zone](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/data-sources/dns_zone) | data source |
-| [azurerm_subscription.subid](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/data-sources/subscription) | data source |
+| [azurerm_subscription.dns_zone](https://registry.terraform.io/providers/hashicorp/azurerm/2.58.0/docs/data-sources/subscription) | data source |
 
 ## Inputs
 

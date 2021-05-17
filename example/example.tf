@@ -11,6 +11,8 @@ terraform {
 provider "azurerm" {
   features {}
 }
+provider "azuread" {
+}
 
 provider "azurerm" {
   features {}

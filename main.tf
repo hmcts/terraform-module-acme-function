@@ -1,5 +1,5 @@
 /**
- * # https://github.com/hmcts/terraform-module-acme-function
+ * # terraform-module-acme-function
  *
  * Terraform module to create a Function App which automates certificate management.
  *

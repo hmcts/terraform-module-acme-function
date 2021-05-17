@@ -15,13 +15,13 @@ resource "azurerm_app_service_plan" "asp" {
 
 
 resource "azurerm_key_vault" "kv" {
-  location                  = var.location
-  name                      = format("%s%s", var.product, var.env)
-  resource_group_name       = azurerm_resource_group.rg.name
-  tenant_id                 = data.azurerm_client_config.current.tenant_id
-  sku_name                  = "standard"
-  enable_rbac_authorization = true
-  tags                      = var.common_tags
+  location            = var.location
+  name                = format("%s%s%s", var.product, var.env, "6")
+  resource_group_name = azurerm_resource_group.rg.name
+  tenant_id           = data.azurerm_client_config.current.tenant_id
+  sku_name            = "standard"
+  //enable_rbac_authorization = true
+  tags = var.common_tags
 }
 
 
@@ -75,7 +75,7 @@ resource "azurerm_function_app" "funcapp" {
     WEBSITE_CONTENTSHARE                       = "${var.product}-${var.env}"
     WEBSITE_RUN_FROM_PACKAGE                   = "https://shibayan.blob.core.windows.net/azure-keyvault-letsencrypt/v3/latest.zip"
     FUNCTIONS_WORKER_RUNTIME                   = "dotnet"
-    "Acmebot:AzureDns:SubscriptionId"          = data.azurerm_subscription.subid.subscription_id
+    "Acmebot:AzureDns:SubscriptionId"          = data.azurerm_subscription.dns_zone.subscription_id
     "Acmebot:Contacts"                         = "cnp-acme-owner@hmcts.net"
     "Acmebot:Endpoint"                         = "https://acme-v02.api.letsencrypt.org/"
     "Acmebot:VaultBaseUrl"                     = azurerm_key_vault.kv.vault_uri

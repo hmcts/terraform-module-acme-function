@@ -1,6 +1,5 @@
 variable "location" {
   description = "Azure location to deploy the resource."
-  type        = string
   default     = "UK South"
 }
 variable "env" {
@@ -9,7 +8,6 @@ variable "env" {
 }
 variable "product" {
   description = "Name of the product."
-  type        = string
   default     = "acme"
 }
 

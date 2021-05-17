@@ -68,9 +68,3 @@ resource "azurerm_key_vault_access_policy" "groupaccess" {
     "deleteissuers",
   ]
 }
-
-resource "azurerm_role_assignment" "appinsight" {
-  principal_id         = azurerm_function_app.funcapp.identity[0].principal_id
-  role_definition_name = "Contributor"
-  scope                = azurerm_application_insights.appinsight.id
-}
