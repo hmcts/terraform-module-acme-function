@@ -1,5 +1,5 @@
 data "azurerm_client_config" "current" {
-  provider = azurerm.subscriptionid
+
 }
 data "azurerm_dns_zone" "zone" {
   provider            = azurerm.dnszone
