@@ -1,5 +1,6 @@
 
 resource "azurerm_app_service_plan" "asp" {
+  provider            = azurerm.subscriptionid
   location            = var.location
   name                = "${var.product}-${var.env}-asp"
   resource_group_name = azurerm_resource_group.rg.name
@@ -13,6 +14,7 @@ resource "azurerm_app_service_plan" "asp" {
 }
 
 resource "azurerm_key_vault" "kv" {
+  provider                  = azurerm.subscriptionid
   location                  = var.location
   name                      = "${var.product}${var.env}"
   resource_group_name       = azurerm_resource_group.rg.name
@@ -23,6 +25,7 @@ resource "azurerm_key_vault" "kv" {
 }
 
 resource "azurerm_application_insights" "appinsight" {
+  provider            = azurerm.subscriptionid
   application_type    = "web"
   location            = var.location
   name                = "${var.product}-${var.env}"
@@ -31,6 +34,7 @@ resource "azurerm_application_insights" "appinsight" {
 }
 
 resource "azurerm_storage_account" "stg" {
+  provider                 = azurerm.subscriptionid
   name                     = "${var.product}${var.env}stg"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = var.location
@@ -40,6 +44,7 @@ resource "azurerm_storage_account" "stg" {
 }
 
 resource "azurerm_function_app" "funcapp" {
+  provider                   = azurerm.subscriptionid
   name                       = "${var.product}-${var.env}"
   location                   = var.location
   resource_group_name        = azurerm_resource_group.rg.name

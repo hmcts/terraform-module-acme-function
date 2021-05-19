@@ -1,4 +1,6 @@
-data "azurerm_client_config" "current" {}
+data "azurerm_client_config" "current" {
+  provider = azurerm.subscriptionid
+}
 data "azurerm_dns_zone" "zone" {
   provider            = azurerm.dnszone
   for_each            = toset(var.dns_zones)
@@ -6,7 +8,7 @@ data "azurerm_dns_zone" "zone" {
   resource_group_name = var.dns_zone_rg
 }
 data "azurerm_subscription" "dns_zone" {
-  provider = "azurerm.dnszone"
+  provider = azurerm.dnszone
 }
 
 data "azuread_group" "group" {
