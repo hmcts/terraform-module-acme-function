@@ -14,7 +14,7 @@ resource "azurerm_app_service_plan" "asp" {
 
 resource "azurerm_key_vault" "kv" {
   location                  = var.location
-  name                      = "${var.product}${var.env}"
+  name                      = "acme${lower(data.azurerm_subscription.subscriptionid.display_name)}"
   resource_group_name       = azurerm_resource_group.rg.name
   tenant_id                 = data.azurerm_client_config.current.tenant_id
   sku_name                  = "standard"
@@ -31,7 +31,7 @@ resource "azurerm_application_insights" "appinsight" {
 }
 
 resource "azurerm_storage_account" "stg" {
-  name                     = "${var.product}${var.env}stg"
+  name                     = "acme${lower(data.azurerm_subscription.subscriptionid.display_name)}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = var.location
   account_tier             = "Standard"
