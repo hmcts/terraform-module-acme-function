@@ -14,7 +14,7 @@ resource "azurerm_app_service_plan" "asp" {
 
 resource "azurerm_key_vault" "kv" {
   location                  = var.location
-  name                      = "acme-${local.name}"
+  name                      = "acme${replace(local.name, "-", "")}"
   resource_group_name       = azurerm_resource_group.rg.name
   tenant_id                 = data.azurerm_client_config.current.tenant_id
   sku_name                  = "standard"
