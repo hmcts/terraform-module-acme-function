@@ -1,4 +1,4 @@
 locals {
-  name = replace(lower(data.azurerm_subscription.subscriptionid.display_name), "-", "")
+  name = replace(lower(data.azurerm_subscription.subscriptionid.display_name), "sharedservices", "sds")
 
 }
