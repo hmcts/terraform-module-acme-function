@@ -93,3 +93,8 @@ resource "azuread_application" "appreg" {
     }
   }
 }
+
+resource "azuread_group_member" "dnszonecontributor" {
+  group_object_id  = "var.dns_contributor_group"
+  member_object_id = "azurerm_function_app.funcapp.identity[0].principal_id"
+}

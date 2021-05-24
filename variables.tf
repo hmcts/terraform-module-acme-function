@@ -19,11 +19,6 @@ variable "asp_sku_tier" {
   description = "SKU tier for App Service Plan."
 }
 
-variable "dns_zones" {
-  type        = list(any)
-  description = "List of DNS Zones."
-}
-
 variable "dns_zone_rg" {
   default     = "reformMgmtRG"
   description = "Name of the resource group DNS Zones belongs to."
@@ -32,4 +27,8 @@ variable "dns_zone_rg" {
 variable "common_tags" {
   description = "Common tag to be applied"
   type        = map(string)
+}
+
+variable "dns_contributor_group" {
+  description = "DTS Public DNS Contributor group"
 }
