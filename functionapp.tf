@@ -81,7 +81,7 @@ resource "azurerm_function_app" "funcapp" {
 
 resource "azuread_application" "appreg" {
   display_name               = "acme-${lower(data.azurerm_subscription.subscriptionid.display_name)}"
-  reply_urls                 = ["https://${var.product}-${var.env}.azurewebsites.net/.auth/login/aad/callback"]
+  reply_urls                 = ["https://acme${replace(local.name, "-", "")}.azurewebsites.net/.auth/login/aad/callback"]
   available_to_other_tenants = false
   oauth2_allow_implicit_flow = true
   required_resource_access {
