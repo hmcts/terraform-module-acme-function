@@ -10,9 +10,9 @@ module "acme" {
   providers = {
     azurerm.dnszone = azurerm.dnszones
   }
-  location    = "uk south"
-  env         = "sbox"
-  dns_zones   = ["sandbox.platform.hmcts.net"]
-  common_tags = module.acmetags.common_tags
-  product     = "cftacme" //"sdsacme"
+  location                 = "uk south"
+  env                      = "sbox"
+  common_tags              = module.acmetags.common_tags
+  product                  = "cftacme" //"sdsacme"
+  dns_contributor_group_id = "6307b856-d312-49e2-9944-fbe80dc60b95"
 }
