@@ -5,6 +5,8 @@ data "azurerm_subscription" "dns_zone" {
   provider = azurerm.dnszone
 }
 
-data "azuread_group" "group" {}
+data "azuread_group" "group" {
+  display_name = "DTS Platform Operations"
+}
 
 data "azurerm_subscription" "subscriptionid" {}
