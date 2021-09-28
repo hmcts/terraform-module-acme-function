@@ -80,7 +80,7 @@ resource "azurerm_function_app" "funcapp" {
 }
 
 resource "azuread_application" "appreg" {
-  display_name = "acme-${lower(data.azurerm_subscription.subscriptionid.name)}"
+  subscription_name = "acme-${lower(data.azurerm_subscription.subscriptionid.subscription_name)}"
   web {
     redirect_uris = ["https://acme${replace(local.name, "-", "")}.azurewebsites.net/.auth/login/aad/callback"]
 
