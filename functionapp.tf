@@ -80,10 +80,14 @@ resource "azurerm_function_app" "funcapp" {
 }
 
 resource "azuread_application" "appreg" {
-  display_name               = "acme-${lower(data.azurerm_subscription.subscriptionid.display_name)}"
-  reply_urls                 = ["https://acme${replace(local.name, "-", "")}.azurewebsites.net/.auth/login/aad/callback"]
-  available_to_other_tenants = false
-  oauth2_allow_implicit_flow = true
+  display_name = "acme-${lower(data.azurerm_subscription.subscriptionid.display_name)}"
+  web {
+    redirect_uris = ["https://acme${replace(local.name, "-", "")}.azurewebsites.net/.auth/login/aad/callback"]
+  }
+  implicit_grant {
+    access_token_issuance_enabled = true
+    id_token_issuance_enabled     = true
+  }
   required_resource_access {
     resource_app_id = "00000003-0000-0000-c000-000000000000"
 
