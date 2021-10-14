@@ -20,6 +20,7 @@ resource "azurerm_key_vault" "kv" {
   sku_name                  = "standard"
   enable_rbac_authorization = true
   tags                      = var.common_tags
+  enabled_for_deployment    = true
 }
 
 resource "azurerm_application_insights" "appinsight" {

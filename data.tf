@@ -6,7 +6,7 @@ data "azurerm_subscription" "dns_zone" {
 }
 
 data "azuread_group" "group" {
-  display_name = "DTS Platform Operations"
+  display_name     = "DTS Platform Operations"
   security_enabled = true
 }
 
