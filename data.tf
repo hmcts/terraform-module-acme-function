@@ -2,6 +2,7 @@ data "azurerm_client_config" "current" {
 
 }
 data "azurerm_subscription" "dns_zone" {
+  provider = azurerm.dnszone
 }
 
 data "azuread_group" "group" {
@@ -9,6 +10,4 @@ data "azuread_group" "group" {
   security_enabled = true
 }
 
-data "azurerm_subscription" "subscriptionid" {
-  subscription_id = var.subscription_id
-}
+data "azurerm_subscription" "subscriptionid" {}
