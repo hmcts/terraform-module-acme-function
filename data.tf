@@ -11,3 +11,7 @@ data "azuread_group" "group" {
 data "azurerm_subscription" "subscriptionid" {
   subscription_id = var.subscription_id
 }
+
+data "azuread_group" "dns_contributor" {
+  display_name = "DTS Public DNS Contributor (env:${lower(var.env)})"
+}
