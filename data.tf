@@ -9,4 +9,6 @@ data "azuread_group" "group" {
   security_enabled = true
 }
 
-data "azurerm_subscription" "subscriptionid" {}
+data "azurerm_subscription" "subscriptionid" {
+  subscription_id = var.subscription_id
+}
