@@ -39,3 +39,5 @@ variable "asp_id" {}
 variable "resource_group_id" {}
 
 variable "resource_group_name" {}
+
+variable "dns_contributor_group_id" {}
