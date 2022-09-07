@@ -24,9 +24,9 @@ variable "common_tags" {
   type        = map(string)
 }
 
-# variable "dns_contributor_group_id" {
-#   description = "DTS Public DNS Contributor group"
-# }
+variable "dns_contributor_group_id" {
+  description = "DTS Public DNS Contributor group"
+}
 
 variable "acme_storage_account_repl_type" {
   description = "Replication type for acme storage account"
