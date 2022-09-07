@@ -26,7 +26,7 @@ resource "azurerm_key_vault" "kv" {
 resource "azurerm_application_insights" "appinsight" {
   application_type    = "web"
   location            = var.location
-  name                = "${var.product}-${var.env}"
+  name                = "acme${replace(local.name, "-", "")}"
   resource_group_name = var.resource_group_name
   tags                = var.common_tags
 }
