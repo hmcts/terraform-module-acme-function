@@ -1,17 +1,3 @@
-
-# resource "azurerm_app_service_plan" "asp" {
-#   location            = var.location
-#   name                = "${var.product}-${var.env}-asp"
-#   resource_group_name = var.resource_group_name
-#   kind                = "FunctionApp"
-#   reserved            = false
-#   sku {
-#     size = var.asp_sku_size
-#     tier = var.asp_sku_tier
-#   }
-#   tags = var.common_tags
-# }
-
 resource "azurerm_key_vault" "kv" {
   location                  = var.location
   name                      = "acme${replace(local.name, "-", "")}"
