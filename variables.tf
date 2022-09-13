@@ -31,3 +31,11 @@ variable "dns_contributor_group_id" {
 variable "acme_storage_account_repl_type" {
   description = "Replication type for acme storage account"
 }
+
+variable "subscription_id" {}
+
+variable "asp_id" {}
+
+variable "resource_group_id" {}
+
+variable "resource_group_name" {}
