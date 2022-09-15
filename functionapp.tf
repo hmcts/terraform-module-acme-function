@@ -56,7 +56,7 @@ resource "azurerm_windows_function_app" "funcapp" {
     AzureWebJobsStorage                        = azurerm_storage_account.stg.primary_connection_string
     WEBSITE_CONTENTAZUREFILECONNECTIONSTRING   = azurerm_storage_account.stg.primary_connection_string
     WEBSITE_CONTENTSHARE                       = "${var.product}-${var.env}"
-    WEBSITE_RUN_FROM_PACKAGE                   = "https://shibayan.blob.core.windows.net/azure-keyvault-letsencrypt/v3/latest.zip"
+    WEBSITE_RUN_FROM_PACKAGE                   = "https://stacmebotprod.blob.core.windows.net/keyvault-acmebot/v4/latest.zip"
     FUNCTIONS_WORKER_RUNTIME                   = "dotnet"
     "Acmebot:AzureDns:SubscriptionId"          = data.azurerm_subscription.dns_zone.subscription_id
     "Acmebot:Contacts"                         = "cnp-acme-owner@hmcts.net"
