@@ -26,7 +26,7 @@ resource "azurerm_storage_account" "stg" {
   tags                     = var.common_tags
 }
 
-resource "azurerm_linux_function_app" "funcapp" {
+resource "azurerm_windows_function_app" "funcapp" {
   name                = "acme${replace(local.name, "-", "")}"
   resource_group_name = var.resource_group_name
   location            = var.location
@@ -89,5 +89,5 @@ resource "azuread_application" "appreg" {
 
 resource "azuread_group_member" "dnszonecontributor" {
   group_object_id  = var.dns_contributor_group_id
-  member_object_id = azurerm_linux_function_app.funcapp.identity[0].principal_id
+  member_object_id = azurerm_windows_function_app.funcapp.identity[0].principal_id
 }

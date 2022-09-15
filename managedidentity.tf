@@ -1,12 +1,12 @@
 resource "azurerm_role_assignment" "Reader" {
-  principal_id         = azurerm_linux_function_app.funcapp.identity[0].principal_id
+  principal_id         = azurerm_windows_function_app.funcapp.identity[0].principal_id
   role_definition_name = "Reader"
   scope                = var.resource_group_id
 }
 
 
 resource "azurerm_role_assignment" "kvaccess" {
-  principal_id         = azurerm_linux_function_app.funcapp.identity[0].principal_id
+  principal_id         = azurerm_windows_function_app.funcapp.identity[0].principal_id
   role_definition_name = "Key Vault Administrator"
   scope                = azurerm_key_vault.kv.id
 }
