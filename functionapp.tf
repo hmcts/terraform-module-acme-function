@@ -26,14 +26,16 @@ resource "azurerm_storage_account" "stg" {
   tags                     = var.common_tags
 }
 
-resource "azurerm_function_app" "funcapp" {
-  name                       = "acme${replace(local.name, "-", "")}"
-  location                   = var.location
-  resource_group_name        = var.resource_group_name
-  app_service_plan_id        = var.asp_id
+resource "azurerm_windows_function_app" "funcapp" {
+  name                = "acme${replace(local.name, "-", "")}"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+
   storage_account_name       = azurerm_storage_account.stg.name
   storage_account_access_key = azurerm_storage_account.stg.primary_access_key
-  version                    = "~3"
+  service_plan_id            = var.asp_id
+
+  site_config {}
 
   identity {
     type = "SystemAssigned"
@@ -47,7 +49,6 @@ resource "azurerm_function_app" "funcapp" {
       client_id = azuread_application.appreg.application_id
     }
   }
-
   app_settings = {
     APPINSIGHTS_INSTRUMENTATIONKEY             = azurerm_application_insights.appinsight.instrumentation_key
     ApplicationInsightsAgent_EXTENSION_VERSION = "~2"
@@ -55,7 +56,7 @@ resource "azurerm_function_app" "funcapp" {
     AzureWebJobsStorage                        = azurerm_storage_account.stg.primary_connection_string
     WEBSITE_CONTENTAZUREFILECONNECTIONSTRING   = azurerm_storage_account.stg.primary_connection_string
     WEBSITE_CONTENTSHARE                       = "${var.product}-${var.env}"
-    WEBSITE_RUN_FROM_PACKAGE                   = "https://shibayan.blob.core.windows.net/azure-keyvault-letsencrypt/v3/latest.zip"
+    WEBSITE_RUN_FROM_PACKAGE                   = "https://stacmebotprod.blob.core.windows.net/keyvault-acmebot/v4/latest.zip"
     FUNCTIONS_WORKER_RUNTIME                   = "dotnet"
     "Acmebot:AzureDns:SubscriptionId"          = data.azurerm_subscription.dns_zone.subscription_id
     "Acmebot:Contacts"                         = "cnp-acme-owner@hmcts.net"
@@ -88,5 +89,5 @@ resource "azuread_application" "appreg" {
 
 resource "azuread_group_member" "dnszonecontributor" {
   group_object_id  = var.dns_contributor_group_id
-  member_object_id = azurerm_function_app.funcapp.identity[0].principal_id
+  member_object_id = azurerm_windows_function_app.funcapp.identity[0].principal_id
 }
