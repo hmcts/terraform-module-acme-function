@@ -35,7 +35,10 @@ resource "azurerm_windows_function_app" "funcapp" {
   storage_account_access_key = azurerm_storage_account.stg.primary_access_key
   service_plan_id            = var.asp_id
 
-  site_config {}
+  site_config {
+    application_insights_connection_string = "InstrumentationKey=${azurerm_application_insights.appinsight.instrumentation_key};IngestionEndpoint=https://uksouth-0.in.applicationinsights.azure.com/"
+    application_insights_key               = azurerm_application_insights.appinsight.instrumentation_key
+  }
 
   identity {
     type = "SystemAssigned"
