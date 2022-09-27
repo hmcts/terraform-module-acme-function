@@ -53,7 +53,6 @@ resource "azurerm_windows_function_app" "funcapp" {
   }
   app_settings = {
     ApplicationInsightsAgent_EXTENSION_VERSION = "~2"
-    APPLICATIONINSIGHTS_CONNECTION_STRING      = "InstrumentationKey=${azurerm_application_insights.appinsight.instrumentation_key};IngestionEndpoint=https://uksouth-0.in.applicationinsights.azure.com/"
     AzureWebJobsStorage                        = azurerm_storage_account.stg.primary_connection_string
     WEBSITE_CONTENTAZUREFILECONNECTIONSTRING   = azurerm_storage_account.stg.primary_connection_string
     WEBSITE_CONTENTSHARE                       = "${var.product}-${var.env}"
