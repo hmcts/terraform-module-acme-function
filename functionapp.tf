@@ -18,12 +18,13 @@ resource "azurerm_application_insights" "appinsight" {
 }
 
 resource "azurerm_storage_account" "stg" {
-  name                     = "acme${replace(local.name, "-", "")}"
-  resource_group_name      = var.resource_group_name
-  location                 = var.location
-  account_tier             = "Standard"
-  account_replication_type = var.acme_storage_account_repl_type
-  tags                     = var.common_tags
+  name                            = "acme${replace(local.name, "-", "")}"
+  resource_group_name             = var.resource_group_name
+  location                        = var.location
+  account_tier                    = "Standard"
+  account_replication_type        = var.acme_storage_account_repl_type
+  tags                            = var.common_tags
+  allow_nested_items_to_be_public = var.allow_nested_items_to_be_public
 }
 
 resource "azurerm_windows_function_app" "funcapp" {
