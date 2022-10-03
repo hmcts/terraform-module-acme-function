@@ -67,8 +67,22 @@ resource "azurerm_windows_function_app" "funcapp" {
   tags = var.common_tags
 }
 
+resource "random_uuid" "app_uuid" {}
+
 resource "azuread_application" "appreg" {
-  display_name = "acme-${lower(data.azurerm_subscription.subscriptionid.display_name)}"
+  display_name = local.app_name
+  api {
+    oauth2_permission_scope {
+      admin_consent_description  = "Allow the application to access ${local.app_name} on behalf of the signed-in user."
+      admin_consent_display_name = "Access ${local.app_name}"
+      id                         = random_uuid.app_uuid.result
+      enabled                    = true
+      type                       = "User"
+      user_consent_description   = "Allow the application to access ${local.app_name} on your behalf."
+      user_consent_display_name  = "Access ${local.app_name}"
+      value                      = "user_impersonation"
+    }
+  }
   web {
     redirect_uris = ["https://acme${replace(local.name, "-", "")}.azurewebsites.net/.auth/login/aad/callback"]
 
