@@ -17,6 +17,6 @@ resource "azurerm_service_plan" "asp" {
   name                = "${var.product}-${var.env}-asp"
   resource_group_name = azurerm_resource_group.rg.name
   os_type             = "Windows"
-  sku_name            = var.sp_sku_name
+  sku_name            = "Y1"
   tags                = var.common_tags
 }
