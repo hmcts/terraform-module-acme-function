@@ -1,7 +1,7 @@
 resource "azurerm_role_assignment" "Reader" {
   principal_id         = azurerm_windows_function_app.funcapp.identity[0].principal_id
   role_definition_name = "Reader"
-  scope                = var.resource_group_id
+  scope                = azurerm_resource_group.rg.id
 }
 
 
