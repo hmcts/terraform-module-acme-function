@@ -34,11 +34,11 @@ variable "acme_storage_account_repl_type" {
 
 variable "subscription_id" {}
 
-variable "asp_id" {}
+# variable "asp_id" {}
 
-variable "resource_group_id" {}
+# variable "resource_group_id" {}
 
-variable "resource_group_name" {}
+# variable "resource_group_name" {}
 
 variable "allow_nested_items_to_be_public" {
   default = false
