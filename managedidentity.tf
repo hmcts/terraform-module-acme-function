@@ -11,7 +11,7 @@ resource "azurerm_role_assignment" "kvaccess" {
   scope                = azurerm_key_vault.kv.id
 }
 resource "azurerm_role_assignment" "kvgroupaccess" {
-  principal_id         = data.azuread_group.group.object_id
+  principal_id         = var.platform_operations_object_id
   role_definition_name = "Key Vault Administrator"
   scope                = azurerm_key_vault.kv.id
 }

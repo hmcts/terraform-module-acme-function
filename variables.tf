@@ -43,3 +43,7 @@ variable "subscription_id" {}
 variable "allow_nested_items_to_be_public" {
   default = false
 }
+
+variable "platform_operations_object_id" {
+  type = string
+}
