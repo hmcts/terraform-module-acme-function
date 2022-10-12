@@ -30,11 +30,9 @@ variable "acme_storage_account_repl_type" {
 
 variable "subscription_id" {}
 
-# variable "asp_id" {}
+variable "dns_contributor_group_object_id" {}
 
-# variable "resource_group_id" {}
-
-# variable "resource_group_name" {}
+variable "platform_operations_group_object_id" {}
 
 variable "allow_nested_items_to_be_public" {
   default = false
