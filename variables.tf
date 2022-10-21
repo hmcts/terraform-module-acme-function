@@ -38,4 +38,4 @@ variable "allow_nested_items_to_be_public" {
 
 variable "platform_operations_group" {}
 
-variable "dns_contributor_group" {}
+variable "dns_contributor_group_object_id" {}
