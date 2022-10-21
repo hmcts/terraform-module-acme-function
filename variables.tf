@@ -36,6 +36,6 @@ variable "allow_nested_items_to_be_public" {
   default = false
 }
 
-variable "administrator_ad_group_object_id" {}
+variable "administrator_group_object_id" {}
 
 variable "dns_contributor_group_object_id" {}
